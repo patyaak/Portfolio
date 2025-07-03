@@ -6,10 +6,13 @@ const projectsData = {
     ]
   },
   "Vroom Vroom": {
-    description: "Vroom Vroom is a thrilling 3D racing game with realistic physics...",
+    description: "Vroom Vroom is 3D car racing game with realistic physics. In this game, players can choose different cars and race against 4–5 opponent cars. It has exciting tracks with checkpoints so players can restart if they crash. The game also has a minimap to show the track and a speedometer to see how fast you are going. Vroom Vroom is challenging and fun, giving players a thrilling racing experience.",
     images: [
       "assets/images/v2.png",
-      "assets/images/v3.png"
+      "assets/images/v3.png",
+      "assets/images/v4.png",
+      "assets/images/v5.png",
+      "assets/images/v6.png",
     ]
   },
   "CasinoIgnite": {
