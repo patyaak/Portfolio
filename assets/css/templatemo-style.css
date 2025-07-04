@@ -765,6 +765,12 @@ body.modal-open {
   overflow: hidden;
 }
 
+.modal-images-grid video {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+
 /* Contact Me */
 
 section.contact-me {
