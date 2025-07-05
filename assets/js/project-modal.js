@@ -1,6 +1,6 @@
 const projectsData = {
   "Heist Room": {
-    description: "**Heist Room is an exciting casino game platform packed with multiple thrilling casino games, offering players a fun and engaging experience. I was proud to be deeply involved in this office project, where I designed and developed various games from scratch. The entire platform was built using Unity, and I also contributed to the backend development with Node.js, ensuring smooth gameplay and robust performance. Working on Heist Room was an amazing journey that allowed me to showcase my creativity and technical skills in both game development and backend engineering.",
+    description: "Heist Room is an exciting casino game platform packed with multiple thrilling casino games, offering players a fun and engaging experience. I was proud to be deeply involved in this office project, where I designed and developed various games from scratch. The entire platform was built using Unity, and I also contributed to the backend development with Node.js, ensuring smooth gameplay and robust performance. Working on Heist Room was an amazing journey that allowed me to showcase my creativity and technical skills in both game development and backend engineering.",
     images: ["assets/images/HeistRoom.png"]
   },
   "Vroom Vroom": {
@@ -11,7 +11,8 @@ const projectsData = {
       "assets/images/v4.png",
       "assets/images/v5.png",
       "assets/images/v6.png"
-    ]
+    ],
+    videos: ["assets/videos/vroomclip.mp4"]
   },
   "CasinoIgnite": {
     description: "Casino Ignite is an exciting casino game platform developed using Cocos, offering a variety of fun and engaging casino games. This was an office project I joined later, where I contributed by creating the dashboard and leaderboard systems to enhance player engagement. I also developed some of the games featured on the platform and created the login system to ensure a smooth and secure user experience. Being part of Casino Ignite allowed me to expand my skills and work on different aspects of game development in a collaborative and dynamic environment.",
@@ -19,8 +20,8 @@ const projectsData = {
     videos: ["assets/videos/casinoIgnite.mp4"]
   },
   "Rolling Dice": {
-    description: "Rolling Dice is a fun dice game with multiplayer support...",
-    images: ["assets/images/rd-dash.jpg"]
+    description: "Rolling Dice is an exciting casino game platform developed using Cocos, offering a variety of fun and engaging casino games. This was also an office project that I joined later, where I contributed by creating the dashboard system to provide a smooth and interactive experience for players. I also developed several of the games featured on the platform, helping to deliver an enjoyable and seamless gameplay experience. Being part of Rolling Dice allowed me to further enhance my skills and work on different aspects of game development in a collaborative and innovative environment.",
+    images: ["assets/images/rd-dash.jpg", "assets/images/rd.jpg"]
   },
   "Delivery Driver": {
     description: "Delivery Driver is a casual 2D game about delivering packages on time.",
@@ -87,34 +88,49 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
         videoWrapper.style.display = 'block';
         videoWrapper.style.width = '100%';
         videoWrapper.style.marginTop = '10px';
-        videoWrapper.style.cursor = 'pointer';
 
         const videoEl = document.createElement('video');
         videoEl.src = src;
         videoEl.style.width = '100%';
         videoEl.style.display = 'block';
-        videoEl.preload = 'metadata'; // only loads metadata at first
+        videoEl.preload = 'metadata';
 
         // Overlay play button
         const playBtn = document.createElement('div');
-        playBtn.innerHTML = '&#9658;'; // triangle play symbol
+        playBtn.innerHTML = '&#9658;'; // triangle symbol
         playBtn.style.position = 'absolute';
         playBtn.style.top = '50%';
         playBtn.style.left = '50%';
         playBtn.style.transform = 'translate(-50%, -50%)';
         playBtn.style.fontSize = '64px';
-        playBtn.style.color = 'white';
-        playBtn.style.opacity = '0.8';
-        playBtn.style.pointerEvents = 'none'; // allow click through
+        playBtn.style.color = 'silver';
+        playBtn.style.opacity = '0.9';
+        playBtn.style.cursor = 'pointer';
+        playBtn.style.background = 'rgba(0, 0, 0, 0.5)';
+        playBtn.style.borderRadius = '50%';
+        playBtn.style.padding = '20px';
 
         videoWrapper.appendChild(videoEl);
         videoWrapper.appendChild(playBtn);
         modalImagesGrid.appendChild(videoWrapper);
 
-        // Play on click
-        videoWrapper.addEventListener('click', () => {
-          videoEl.setAttribute('controls', true);
-          videoEl.play();
+        // Play when clicking the play button
+        playBtn.addEventListener('click', (event) => {
+          event.stopPropagation(); // prevent bubbling
+          if (videoEl.paused) {
+            videoEl.play();
+            videoEl.setAttribute('controls', true);
+            playBtn.style.display = 'none';
+          }
+        });
+
+        // Show play button when paused
+        videoEl.addEventListener('pause', () => {
+          playBtn.style.display = '';
+        });
+
+        // Hide play button when playing
+        videoEl.addEventListener('play', () => {
           playBtn.style.display = 'none';
         });
       });
