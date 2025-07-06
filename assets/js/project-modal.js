@@ -21,15 +21,18 @@ const projectsData = {
   },
   "Rolling Dice": {
     description: "Rolling Dice is an exciting casino game platform developed using Cocos, offering a variety of fun and engaging casino games. This was also an office project that I joined later, where I contributed by creating the dashboard system to provide a smooth and interactive experience for players. I also developed several of the games featured on the platform, helping to deliver an enjoyable and seamless gameplay experience. Being part of Rolling Dice allowed me to further enhance my skills and work on different aspects of game development in a collaborative and innovative environment.",
-    images: ["assets/images/rd-dash.jpg", "assets/images/rd.jpg"]
+    images: ["assets/images/rd.jpg", "assets/images/rd-dash.jpg"],
+    videos: ["assets/videos/rollingdicevideo.mp4"]
   },
   "Delivery Driver": {
-    description: "Delivery Driver is a casual 2D game about delivering packages on time.",
-    images: ["assets/images/delivery.png", "assets/images/delivery_2.png"]
+    description: "Delivery Driver is a fun and simple 2D game that was my first project to start learning the Unity Engine. Through this project, I explored the Unity environment and understood key physics concepts like colliders and rigid bodies. I learned to work with 2D shapes such as capsules, squares, and circles, and implemented basic car movement mechanics including driving forwards and backwards, turning left and right, and reacting to speed boosts and slow-down zones. The game also features package pickup and delivery systems, along with color changes to indicate the car’s status. Building Delivery Driver helped me gain a solid foundation in Unity and game development basics in an engaging way.",
+    images: ["assets/images/delivery.png"],
+    videos: ["assets/videos/delivery.mp4"]
   },
   "Quiz": {
-    description: "Quiz is an educational 2D game designed to test your knowledge.",
-    images: ["assets/images/cat.png"]
+    description: "Quiz Master is an educational and fun 2D game designed to test players' knowledge across different categories. In this game, players are presented with questions from various topics and must choose the correct answer from four options within a limited time, adding a sense of challenge and excitement. The game includes key features like a system to store and retrieve questions, interactive answer buttons, a timer to create pressure, and a progress bar to show how many questions remain. It also has a scoring system to track performance and an option to restart the game after finishing.",
+    images: ["assets/images/q1.png","assets/images/cat.png","assets/images/q2.png"],
+    videos: ["assets/videos/quiz.mp4"]
   },
   "Lazer Defender": {
     description: "Lazer Defender is a classic 2D shooter game with retro graphics.",
