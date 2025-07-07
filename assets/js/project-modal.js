@@ -29,18 +29,20 @@ const projectsData = {
     images: ["assets/images/delivery.png"],
     videos: ["assets/videos/delivery.mp4"]
   },
-  "Quiz": {
+  "Quiz Master": {
     description: "Quiz Master is an educational and fun 2D game designed to test players' knowledge across different categories. In this game, players are presented with questions from various topics and must choose the correct answer from four options within a limited time, adding a sense of challenge and excitement. The game includes key features like a system to store and retrieve questions, interactive answer buttons, a timer to create pressure, and a progress bar to show how many questions remain. It also has a scoring system to track performance and an option to restart the game after finishing.",
     images: ["assets/images/q1.png","assets/images/cat.png","assets/images/q2.png"],
     videos: ["assets/videos/quiz.mp4"]
   },
   "Lazer Defender": {
-    description: "Lazer Defender is a classic 2D shooter game with retro graphics.",
-    images: ["assets/images/LD1.png"]
+    description: "Lazer Defender is a classic 2D shooter game with retro graphics.Laser Defender is an action-packed shooting game inspired by classic space shooters, where the player must survive waves of enemies for as long as possible while scoring points by shooting them down. The game features a player spaceship that moves forward and backward using touch input and fires bullets to attack enemies. Players must skillfully dodge enemy bullets to avoid losing health, as both the player and different enemy ships have their own health systems. Enemy spaceships follow predefined paths using waypoints, creating challenging attack patterns. The game also includes a high score system to track the best performances and incorporates audio effects to enhance the gameplay experience.",
+    images: ["assets/images/LD2.jpg","assets/images/LD3.jpg","assets/images/LD4.jpg","assets/images/LD5.jpg"],
+    videos: ["assets/videos/Ld-video.mp4"]
   },
   "2048": {
-    description: "2048 is a simple yet addictive number puzzle game.",
-    images: ["assets/images/2048.png"]
+    description: "2048 is a simple yet addictive number puzzle game.The game’s objective is to slide numbered tiles on a grid to combine them to create a tile with the number 2048. However, one can continue to play the game after reaching the goal, creating tiles with larger numbers. The game is played on a 4x4 grid, and the player can move tiles in four directions: up, down, left, and right. With each move, a new tile (either 2 or 4) appears on the grid in a random empty spot. When two tiles with the same number collide while moving, they merge into one tile with the sum of their values. The game ends when the grid is full and there are no more moves possible, or when the player successfully creates a tile with the number 2048. The player's score is determined by the value of the tiles they combine during gameplay. 2048 is known for its simple yet addictive gameplay and strategic thinking required to reach the elusive 2048 tile.",
+    images: ["assets/images/2048-2.jpg", "assets/images/2048-3.jpg"],
+     videos: ["assets/videos/2048-v.mp4"]
   }
 };
 
@@ -57,11 +59,41 @@ const modalHTML = `
 `;
 document.body.insertAdjacentHTML('beforeend', modalHTML);
 
+// Create full image preview overlay (hidden initially)
+const fullImagePreviewHTML = `
+  <div id="full-image-preview" style="
+    display:none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index: 10000;
+    cursor: pointer;
+    overflow: auto;  /* scroll if image is bigger */
+  ">
+    <img id="full-image" src="" alt="Full Image" style="
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      box-shadow: 0 0 15px #fff;
+      display: block;
+      margin: auto;
+    "/>
+  </div>
+`;
+
+document.body.insertAdjacentHTML('beforeend', fullImagePreviewHTML);
+
 const modal = document.getElementById('project-modal');
 const modalTitle = modal.querySelector('#modal-title');
 const modalDesc = modal.querySelector('#modal-description');
 const modalImagesGrid = modal.querySelector('.modal-images-grid');
 const modalCloseBtn = modal.querySelector('.modal-close');
+
+const fullImagePreview = document.getElementById('full-image-preview');
+const fullImage = document.getElementById('full-image');
 
 document.querySelectorAll('.project-info-icon').forEach(icon => {
   icon.addEventListener('click', e => {
@@ -146,8 +178,21 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
         imgEl.src = src;
         imgEl.alt = `${projectName} image`;
         imgEl.style.display = "block";
-        imgEl.style.width = "100%";
         imgEl.style.marginTop = "10px";
+        imgEl.style.cursor = "pointer"; // Indicate clickable
+
+        // For Lazer Defender and 2048, reduce overall size (but keep full image)
+        if (projectName === "Lazer Defender" || projectName === "2048") {
+          imgEl.style.width = "70%"; // or any smaller % you want
+          imgEl.style.margin = "10px auto"; // center it
+        }
+
+        // Show full image preview on click
+        imgEl.addEventListener('click', () => {
+          fullImage.src = src;
+          fullImagePreview.style.display = 'flex';
+        });
+
         modalImagesGrid.appendChild(imgEl);
       });
     }
@@ -157,7 +202,18 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
     document.body.classList.add('modal-open');
   });
 });
-
+// Hover preview logic
+modalImagesGrid.addEventListener('mouseover', (e) => {
+  if (e.target.tagName === 'IMG') {
+    previewPopup.src = e.target.src;
+    previewPopup.style.display = 'block';
+  }
+});
+modalImagesGrid.addEventListener('mouseout', (e) => {
+  if (e.target.tagName === 'IMG') {
+    previewPopup.style.display = 'none';
+  }
+});
 // Close modal functions
 const closeModal = () => {
   modal.style.display = 'none';
@@ -175,4 +231,9 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && modal.style.display === 'flex') {
     closeModal();
   }
+});
+
+// Close full image preview when clicked anywhere on it
+fullImagePreview.addEventListener('click', () => {
+  fullImagePreview.style.display = 'none';
 });
