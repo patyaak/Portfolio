@@ -95,6 +95,9 @@ const modalCloseBtn = modal.querySelector('.modal-close');
 const fullImagePreview = document.getElementById('full-image-preview');
 const fullImage = document.getElementById('full-image');
 
+// Show loading state while images load
+document.querySelector('.isotope-wrapper').classList.add('loading');
+
 document.querySelectorAll('.project-info-icon').forEach(icon => {
   icon.addEventListener('click', e => {
     e.stopPropagation();
@@ -132,7 +135,7 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
 
         // Overlay play button
         const playBtn = document.createElement('div');
-        playBtn.innerHTML = '&#9658;'; // triangle symbol
+        playBtn.innerHTML = '&#9658;';
         playBtn.style.position = 'absolute';
         playBtn.style.top = '50%';
         playBtn.style.left = '50%';
@@ -151,7 +154,7 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
 
         // Play when clicking the play button
         playBtn.addEventListener('click', (event) => {
-          event.stopPropagation(); // prevent bubbling
+          event.stopPropagation();
           if (videoEl.paused) {
             videoEl.play();
             videoEl.setAttribute('controls', true);
@@ -179,15 +182,13 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
         imgEl.alt = `${projectName} image`;
         imgEl.style.display = "block";
         imgEl.style.marginTop = "10px";
-        imgEl.style.cursor = "pointer"; // Indicate clickable
+        imgEl.style.cursor = "pointer";
 
-        // For Lazer Defender and 2048, reduce overall size (but keep full image)
         if (projectName === "Lazer Defender" || projectName === "2048") {
-          imgEl.style.width = "70%"; // or any smaller % you want
-          imgEl.style.margin = "10px auto"; // center it
+          imgEl.style.width = "70%";
+          imgEl.style.margin = "10px auto";
         }
 
-        // Show full image preview on click
         imgEl.addEventListener('click', () => {
           fullImage.src = src;
           fullImagePreview.style.display = 'flex';
@@ -202,18 +203,7 @@ document.querySelectorAll('.project-info-icon').forEach(icon => {
     document.body.classList.add('modal-open');
   });
 });
-// Hover preview logic
-modalImagesGrid.addEventListener('mouseover', (e) => {
-  if (e.target.tagName === 'IMG') {
-    previewPopup.src = e.target.src;
-    previewPopup.style.display = 'block';
-  }
-});
-modalImagesGrid.addEventListener('mouseout', (e) => {
-  if (e.target.tagName === 'IMG') {
-    previewPopup.style.display = 'none';
-  }
-});
+
 // Close modal functions
 const closeModal = () => {
   modal.style.display = 'none';
@@ -236,4 +226,29 @@ document.addEventListener('keydown', e => {
 // Close full image preview when clicked anywhere on it
 fullImagePreview.addEventListener('click', () => {
   fullImagePreview.style.display = 'none';
+});
+
+// Initialize Isotope after all images are loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const isotopeWrapper = document.querySelector('.isotope-wrapper');
+  const isotopeContainer = document.querySelector('.isotope-box');
+  
+  if (isotopeContainer) {
+    imagesLoaded(isotopeContainer, function() {
+      isotopeWrapper.classList.remove('loading');
+      
+      // Initialize Isotope
+      const iso = new Isotope(isotopeContainer, {
+        itemSelector: '.isotope-item',
+        layoutMode: 'fitRows',
+        stagger: 30,
+        transitionDuration: '0.6s'
+      });
+      
+      // Show all items after layout
+      document.querySelectorAll('.isotope-item').forEach(item => {
+        item.classList.add('visible');
+      });
+    });
+  }
 });

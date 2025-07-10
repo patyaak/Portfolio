@@ -24,8 +24,6 @@ https://templatemo.com/tm-531-reflux
 </head>
 
 <body>
-
-
   <div id="page-wraper">
     <!-- Sidebar Menu -->
     <div class="responsive-nav">
@@ -43,7 +41,7 @@ https://templatemo.com/tm-531-reflux
           <nav class="main-nav" role="navigation">
             <ul class="main-menu">
               <li><a href="#section1">About Me</a></li>
-              <li><a href="#section2">What I’m good at</a></li>
+              <li><a href="#section2">What I'm good at</a></li>
               <li><a href="#section3">My Work</a></li>
               <li><a href="#section4">Contact Me</a></li>
             </ul>
@@ -80,8 +78,8 @@ https://templatemo.com/tm-531-reflux
         <div class="section-heading">
           <h2>About Me</h2>
           <div class="line-dec"></div>
-          <span>I’m a game developer who loves bringing fun ideas to life. I enjoy creating games that are exciting,
-            engaging, and make people smile. Let’s play and build amazing worlds together!</span>
+          <span>I'm a game developer who loves bringing fun ideas to life. I enjoy creating games that are exciting,
+            engaging, and make people smile. Let's play and build amazing worlds together!</span>
         </div>
         <div class="left-image-post">
           <div class="row">
@@ -139,20 +137,18 @@ https://templatemo.com/tm-531-reflux
             <div class="col-md-6">
               <div class="right-image">
                 <!-- <img src="assets/images/right-image.jpg" alt="" /> -->
-
               </div>
             </div>
           </div>
         </div>
-
-
+      </div>
     </section>
+
     <section class="section my-services" data-section="section2">
       <div class="container">
         <div class="section-heading">
-          <h2>What I’m good at?</h2>
+          <h2>What I'm good at?</h2>
           <div class="line-dec"></div>
-
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -172,7 +168,7 @@ https://templatemo.com/tm-531-reflux
               <div class="second-service-icon service-icon"></div>
               <h4>Node JS</h4>
               <p>
-                Also have basic-level experience with Node.js, where I’ve created mini projects to build and understand
+                Also have basic-level experience with Node.js, where I've created mini projects to build and understand
                 backend systems. These projects helped me learn how to handle server-side logic, manage APIs, and work
                 with databases.
               </p>
@@ -189,32 +185,22 @@ https://templatemo.com/tm-531-reflux
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
-
 
     <section class="section my-work" data-section="section3">
       <div class="container">
         <div class="section-heading">
           <h2>My Work</h2>
+          <div class="line-dec"></div>
           <div class="row">
             <div class="isotope-wrapper">
-              <!-- <form class="isotope-toolbar">
-            <label><input type="radio" data-type="*" checked="" name="isotope-filter" /><span>all</span></label>
-            <label><input type="radio" data-type="casino" name="isotope-filter" /><span>casino games</span></label>
-            <label><input type="radio" data-type="2Dgames" name="isotope-filter" /><span>2D Games</span></label>
-            <label><input type="radio" data-type="3Dgames" name="isotope-filter" /><span>3D Games</span></label>
-          </form> -->
               <div class="isotope-box">
-
                 <div class="isotope-item" data-type="casino">
                   <figure class="snip1321">
                     <img src="assets/images/HeistRoom.png" alt="Heist Room" />
                     <figcaption>
-                      <!-- <i class="fa fa-gamepad"> </i> -->
                       <h4>Heist Room</h4>
                       <span>click "i" for more project details</span>
                       <button class="project-info-icon" aria-label="More info about Heist Room">
@@ -314,15 +300,12 @@ https://templatemo.com/tm-531-reflux
                     </figcaption>
                   </figure>
                 </div>
-
-
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
-
-
 
     <section class="section contact-me" data-section="section4">
       <div class="container">
@@ -378,7 +361,7 @@ https://templatemo.com/tm-531-reflux
   </div>
 
   <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -388,56 +371,71 @@ https://templatemo.com/tm-531-reflux
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/project-modal.js"></script>
   <script>
-    //according to loftblog tut
-    $(".main-menu li:first").addClass("active");
+    $(document).ready(function() {
+      $(".main-menu li:first").addClass("active");
 
-    var showSection = function showSection(section, isAnimate) {
-      var direction = section.replace(/#/, ""),
-        reqSection = $(".section").filter(
-          '[data-section="' + direction + '"]'
-        ),
-        reqSectionPos = reqSection.offset().top - 0;
+      // Initialize Isotope after images load
+      setTimeout(function() {
+        var $grid = $('.isotope-box').isotope({
+          itemSelector: '.isotope-item',
+          layoutMode: 'fitRows',
+          stagger: 30,
+          transitionDuration: '0.6s'
+        });
+        
+        // Force layout when images load
+        $grid.imagesLoaded().progress(function() {
+          $grid.isotope('layout');
+          $('.isotope-item').addClass('visible'); // Show items after layout
+        });
+      }, 100);
 
-      if (isAnimate) {
-        $("body, html").animate(
-          {
-            scrollTop: reqSectionPos
-          },
-          800
-        );
-      } else {
-        $("body, html").scrollTop(reqSectionPos);
-      }
-    };
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
 
-    var checkSection = function checkSection() {
-      $(".section").each(function () {
-        var $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-        if (topEdge < wScroll && bottomEdge > wScroll) {
-          var currentId = $this.data("section"),
-            reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-          reqLink
-            .closest("li")
-            .addClass("active")
-            .siblings()
-            .removeClass("active");
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
         }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
       });
-    };
 
-    $(".main-menu").on("click", "a", function (e) {
-      e.preventDefault();
-      showSection($(this).attr("href"), true);
-    });
-
-    $(window).scroll(function () {
-      checkSection();
+      $(window).scroll(function() {
+        checkSection();
+      });
     });
   </script>
-
 </body>
-
 </html>
