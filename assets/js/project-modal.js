@@ -1,10 +1,10 @@
 const projectsData = {
   "Heist Room": {
-    description: "Heist Room is an exciting casino game platform packed with multiple thrilling casino games, offering players a fun and engaging experience. I was proud to be deeply involved in this office project, where I designed and developed various games from scratch. The entire platform was built using Unity, and I also contributed to the backend development with Node.js, ensuring smooth gameplay and robust performance. Working on Heist Room was an amazing journey that allowed me to showcase my creativity and technical skills in both game development and backend engineering.",
+    description: "Heist Room is a feature-rich casino platform designed to deliver high-energy entertainment. As a key developer on this project, I spearheaded the creation of multiple mini-games from the ground up using Unity. My role extended to integrating robust backend services with Node.js, ensuring secure transaction handling and smooth real-time performance. This project highlights my ability to bridge the gap between engaging frontend mechanics and reliable backend architecture.",
     images: ["assets/images/HeistRoom.png"]
   },
   "Vroom Vroom": {
-    description: "Vroom Vroom is a 3D car racing game with realistic physics, designed as my semester project. In this game, players can choose from different cars and race against 4–5 opponent cars. It features exciting tracks with checkpoints, allowing players to restart if they crash. The game also includes a minimap to show the track and a speedometer to display your speed. Vroom Vroom is both challenging and fun, giving players a thrilling and immersive racing experience.",
+    description: "Developed as my Bachelor's final year project, Vroom Vroom is a 3D racing game that focuses on realistic vehicle physics and competitive AI behavior. Players select from a variety of cars to compete in fast-paced races across challenging tracks. I implemented custom vehicle controllers, checkpoint-based progression systems, and dynamic AI opponents to create a compelling racing experience, complemented by a polished in-game UI.",
     images: [
       "assets/images/v2.png",
       "assets/images/v3.png",
@@ -15,32 +15,32 @@ const projectsData = {
     videos: ["assets/videos/vroomclip.mp4"]
   },
   "CasinoIgnite": {
-    description: "Casino Ignite is an exciting casino game platform developed using Cocos, offering a variety of fun and engaging casino games. This was an office project I joined later, where I contributed by creating the dashboard and leaderboard systems to enhance player engagement. I also developed some of the games featured on the platform and created the login system to ensure a smooth and secure user experience. Being part of Casino Ignite allowed me to expand my skills and work on different aspects of game development in a collaborative and dynamic environment.",
+    description: "Casino Ignite is a comprehensive gaming platform built with Cocos Creator. I joined the team to enhance the user experience by developing a responsive dashboard and a real-time leaderboard system. In addition to UI/UX improvements, I contributed to the development of several core casino games and implemented secure login authentication, ensuring a seamless and engaging player journey.",
     images: ["assets/images/cidashboard.jpg", "assets/images/ci.jpg"],
     videos: ["assets/videos/casinoIgnite.mp4"]
   },
   "Rolling Dice": {
-    description: "Rolling Dice is an exciting casino game platform developed using Cocos, offering a variety of fun and engaging casino games. This was also an office project that I joined later, where I contributed by creating the dashboard system to provide a smooth and interactive experience for players. I also developed several of the games featured on the platform, helping to deliver an enjoyable and seamless gameplay experience. Being part of Rolling Dice allowed me to further enhance my skills and work on different aspects of game development in a collaborative and innovative environment.",
+    description: "Rolling Dice utilizes the Cocos engine to offer a suite of interactive casino games. My contributions focused on engineering a smooth dashboard interface and optimizing game performance. I played a significant role in coding the logic for multiple games within the platform, ensuring valid game states, reliable data handling, and an overall polished user experience.",
     images: ["assets/images/rd.jpg", "assets/images/rd-dash.jpg"],
     videos: ["assets/videos/rollingdicevideo.mp4"]
   },
   "Delivery Driver": {
-    description: "Delivery Driver is a fun and simple 2D game that was my first project to start learning the Unity Engine. Through this project, I explored the Unity environment and understood key physics concepts like colliders and rigid bodies. I learned to work with 2D shapes such as capsules, squares, and circles, and implemented basic car movement mechanics including driving forwards and backwards, turning left and right, and reacting to speed boosts and slow-down zones. The game also features package pickup and delivery systems, along with color changes to indicate the car’s status. Building Delivery Driver helped me gain a solid foundation in Unity and game development basics in an engaging way.",
+    description: "Delivery Driver is a physics-based 2D game that marked my initial deep dive into Unity. The project focuses on mastering rigid body mechanics and collider interactions. Players navigate a delivery vehicle through a town, managing speed and momentum to pick up and deliver packages. This project solidified my understanding of C# scripting for movement logic, collision detection, and state management.",
     images: ["assets/images/delivery.png"],
     videos: ["assets/videos/delivery.mp4"]
   },
   "Quiz Master": {
-    description: "Quiz Master is an educational and fun 2D game designed to test players' knowledge across different categories. In this game, players are presented with questions from various topics and must choose the correct answer from four options within a limited time, adding a sense of challenge and excitement. The game includes key features like a system to store and retrieve questions, interactive answer buttons, a timer to create pressure, and a progress bar to show how many questions remain. It also has a scoring system to track performance and an option to restart the game after finishing.",
+    description: "Quiz Master is an interactive 2D educational game that challenges players across various knowledge categories. I implemented a robust question management system that dynamically retrieves content, paired with a timer-based scoring mechanic to add urgency. The project features a clean UI for feedback, high-score tracking, and efficient data handling to ensure a smooth flow between questions.",
     images: ["assets/images/q1.png","assets/images/cat.png","assets/images/q2.png"],
     videos: ["assets/videos/quiz.mp4"]
   },
   "Lazer Defender": {
-    description: "Lazer Defender is a classic 2D shooter game with retro graphics.Laser Defender is an action-packed shooting game inspired by classic space shooters, where the player must survive waves of enemies for as long as possible while scoring points by shooting them down. The game features a player spaceship that moves forward and backward using touch input and fires bullets to attack enemies. Players must skillfully dodge enemy bullets to avoid losing health, as both the player and different enemy ships have their own health systems. Enemy spaceships follow predefined paths using waypoints, creating challenging attack patterns. The game also includes a high score system to track the best performances and incorporates audio effects to enhance the gameplay experience.",
+    description: "Lazer Defender is a retro-inspired vertical space shooter where players battle waves of incoming enemies. I designed the enemy pathfinding system using waypoints to create diverse attack patterns. The game features a health point system for both player and enemies, a scoring mechanism, and immersive audio effects, delivering a classic fast-paced arcade experience.",
     images: ["assets/images/LD2.jpg","assets/images/LD3.jpg","assets/images/LD4.jpg","assets/images/LD5.jpg"],
     videos: ["assets/videos/Ld-video.mp4"]
   },
   "2048": {
-    description: "2048 is a simple yet addictive number puzzle game.The game’s objective is to slide numbered tiles on a grid to combine them to create a tile with the number 2048. However, one can continue to play the game after reaching the goal, creating tiles with larger numbers. The game is played on a 4x4 grid, and the player can move tiles in four directions: up, down, left, and right. With each move, a new tile (either 2 or 4) appears on the grid in a random empty spot. When two tiles with the same number collide while moving, they merge into one tile with the sum of their values. The game ends when the grid is full and there are no more moves possible, or when the player successfully creates a tile with the number 2048. The player's score is determined by the value of the tiles they combine during gameplay. 2048 is known for its simple yet addictive gameplay and strategic thinking required to reach the elusive 2048 tile.",
+    description: "An implementation of the classic number puzzle game on a 4x4 grid. The core challenge involved programming the complex tile-merging logic and grid management systems. I focused on efficient state management to track valid moves, score calculations, and win/loss conditions, resulting in a smooth and addictive puzzle experience.",
     images: ["assets/images/2048-2.jpg", "assets/images/2048-3.jpg"],
      videos: ["assets/videos/2048-v.mp4"]
   }
