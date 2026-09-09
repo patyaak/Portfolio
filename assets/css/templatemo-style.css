@@ -1168,7 +1168,7 @@ body::before {
 .experience-content h4 { margin-bottom: 5px; font-size: 0.95rem; }
 .split-heading { align-items: center; }
 .filter-bar { gap: 6px; }
-.filter-btn { padding: 8px 11px; background: #f1f4f2; border: 0; font-size: 0.72rem; }
+.filter-btn { padding: 16px 28px; background: #f1f4f2; border: 0; font-size: 1rem; font-weight: 700; }
 .filter-btn.active { background: #dceee5; color: #367f74; border: 0; box-shadow: none; }
 .projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .project-card { animation: none; overflow: hidden; }
