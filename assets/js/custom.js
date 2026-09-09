@@ -154,7 +154,7 @@ media: [
           summary: "Promotional content",
             description: "",
               media: [
-                "assets/videos/lhotse.mp4",
+                "assets/videos/Lhotse.mp4",
               ]
 },
 {
